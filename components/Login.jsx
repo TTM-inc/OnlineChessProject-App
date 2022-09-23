@@ -4,6 +4,13 @@ import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
 import Background from './Background';
 import { Button } from '@rneui/themed'
+
+/**
+ * TODO: Set padding/margin for Signup and rstPwd buttons
+ * @returns 
+ */
+
+
 const Login = () => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
   const [password, onChangePassword] = React.useState('*************');
@@ -20,6 +27,8 @@ const Login = () => {
           <TextInput style={styles.string} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
         </InputContainer>
         <Button buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Login"}/>
+        <Button constainerSyle={styles.clearButton} title="Signup" type="clear"/>
+        <Button title="Forgot Password ?" type="clear"/>
       </View>
     </Background>
   )
