@@ -1,39 +1,54 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
-import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
 import Background from './Background';
 import { Button } from '@rneui/themed'
 
-/**
- * TODO: Set padding/margin for Signup and rstPwd buttons
- * @returns 
- */
 
-
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
   const [password, onChangePassword] = React.useState('*************');
+  const [email, onChangeEmail] = React.useState('UrMailAdress@email.com');
   const [isPwdVisible, setPwdVisible] = React.useState(true);
   const goTo = () => navigation.navigate("Register");
+
+  const  submit = async () => {
+    try {
+      const res = await fetch('http://192.168.153.1:3000/register', {
+        method: 'POST',
+        body: JSON.stringify({
+        username: username,
+        password: password,
+        email: email,
+      }),
+    });
+    console.log(res);
+    onChangeUsername(res);
+    return json; 
+  } catch (error) {
+    onChangeUsername(error);
+    console.error(error);
+    }
+  };
+
 
   return (
     <Background>
       <View style={styles.view}>
-        <Text>Login</Text>
         <InputContainer label={"Username"}>
           <TextInput style={styles.string} onChangeText={onChangeUsername} value={username}></TextInput>
+        </InputContainer>
+        <InputContainer label={"Mail adress"}>
+          <TextInput style={styles.string} onChangeText={onChangeEmail} value={email}></TextInput>
         </InputContainer>
         <InputContainer label={"Password"}>
           <TextInput style={styles.string} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
         </InputContainer>
-        <Button buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Login"}/>
-        <Button constainerSyle={styles.clearButton} title="Signup" onPress={goTo} type="clear"/>
-        <Button title="Forgot Password ?" type="clear"/>
+        <Button buttonStyle={styles.button} onPress={submit} containerStyle={styles.buttonContainer} title={"Enregister"}/>
       </View>
     </Background>
   )
-};
+}
 
 const styles = StyleSheet.create({
   string: {
@@ -57,10 +72,12 @@ const styles = StyleSheet.create({
     color: 'blue',
   },
   view: {
-    height: 400,
+    height: 500,
     // borderWidth: 3,
     marginVertical: '20%',
-    backgroundColor: 'rgb(90, 118, 132)'
+    backgroundColor: 'rgb(90, 118, 132)',
+    borderRadius: 10,
+    paddingTop: 20,
   },
   button: {
     // borderWidth: 2,
@@ -75,4 +92,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login
+
+export default Register;
