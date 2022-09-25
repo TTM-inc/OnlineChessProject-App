@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Dimmensions } from 'react-native';
 import Background from './Background';
 import { Button } from '@rneui/themed'
 import Register from './Register';
@@ -6,12 +7,13 @@ import Register from './Register';
 
 const Home = ({navigation}) => {
 
+  const windowWidth = Dimmensions.get('window').width;
+  const windowHeight = Dimmensions.get('window').height;
   const goToLogin = () => navigation.navigate("Login");
   const goToRegister = () => navigation.navigate("Register");
 
 
   return (
-      <Background>
         <View style={styles.view}>
           <View style={styles.titleView}>
             <Text>Styled Game Title</Text>
@@ -22,7 +24,6 @@ const Home = ({navigation}) => {
             <Button onPress={""} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"}></Button>
           </View>
         </View>
-      </Background>
     )
 }
 
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   view: {
     height: 600,
     // borderWidth: 3,
+    flex: 1,
     marginVertical: '20%',
     backgroundColor: 'rgb(90, 118, 132)'
   },
@@ -44,8 +46,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonView: {
-    width: 255,
-    height: 342,
+    width: '55%',
+    height:     342,
     borderWidth: 0.1,
     paddingLeft: 10,
     left: 146,

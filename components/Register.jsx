@@ -7,9 +7,9 @@ import { Button } from '@rneui/themed'
 
 const Register = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
-  const [password, onChangePassword] = React.useState('*************');
+  const [password, onChangePassword] = React.useState('slt');
   const [email, onChangeEmail] = React.useState('UrMailAdress@email.com');
-  const [isPwdVisible, setPwdVisible] = React.useState(true);
+  const [isPwdHidden, setPwdVisible] = React.useState(true);
   const goTo = () => navigation.navigate("Register");
 
   const  submit = async () => {
@@ -35,16 +35,16 @@ const Register = ({navigation}) => {
   return (
     <Background>
       <View style={styles.view}>
-        <InputContainer label={"Username"}>
+        <InputContainer label={"Username :"}>
           <TextInput style={styles.string} onChangeText={onChangeUsername} value={username}></TextInput>
         </InputContainer>
-        <InputContainer label={"Mail adress"}>
+        <InputContainer label={"E-Mail address :"}>
           <TextInput style={styles.string} onChangeText={onChangeEmail} value={email}></TextInput>
         </InputContainer>
-        <InputContainer label={"Password"}>
-          <TextInput style={styles.string} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
+        <InputContainer label={"Password :"}>
+          <TextInput style={styles.string} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>
         </InputContainer>
-        <Button buttonStyle={styles.button} onPress={submit} containerStyle={styles.buttonContainer} title={"Enregister"}/>
+        <Button buttonStyle={styles.button} onPress={submit} containerStyle={styles.buttonContainer} title={"Register"}/>
       </View>
     </Background>
   )
