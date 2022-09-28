@@ -3,6 +3,8 @@ import { Dimmensions } from 'react-native';
 import Background from './Background';
 import { Button } from '@rneui/themed'
 import Register from './Register';
+import { LinearGradient } from 'expo-linear-gradient';
+import { color } from '@rneui/base';
 
 
 const Home = ({navigation}) => {
@@ -15,51 +17,53 @@ const Home = ({navigation}) => {
 
   return (
       <SafeAreaView style={styles.view}>
-        <View>
-          <View style={styles.titleView}>
-            <Text>Styled Game Title</Text>
-          </View>
-          <View style={styles.buttonView}>
-            <Button onPress={goToLogin} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Login"}></Button>
-            <Button onPress={goToRegister} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Register"}></Button>
-            <Button onPress={""} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"}></Button>
-          </View>
-        </View>
+        {/* <LinearGradient colors={['#F67280', '#C06C84', '#6C5B7B', '#355C7D' ]} style={styles.view} > */}
+            <View style = {styles.mainview}>
+              <View style={styles.titleView}>
+                <Text style={styles.text}>Chess</Text>
+              </View>
+              <View style={styles.buttonView}>
+                <Button onPress={goToLogin} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'#000000'}}></Button>
+                <Button onPress={goToRegister} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Register"} titleStyle={{color:'#000000'}}></Button>
+                <Button onPress={""} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"} titleStyle={{color:'#000000'}}></Button>
+              </View>
+            </View>
+        {/* </LinearGradient> */}
       </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+  
+  text:{
+    fontSize: '50px',
+    color:'#FFFFFF',
+  },
   view: {
-    // borderWidth: 3,
-    flex: 1,
-    display: 'flex',
-    backgroundColor: 'rgb(90, 118, 132)',
+    flex:1,
+    justifyContent: 'center',
+    backgroundColor: '#000000',
   },
   button: {
     height: 55,
+    marginTop: 10,
     borderRadius: 30,
-    borderColor: 'black',
-    backgroundColor: 'rgb(57, 91, 80)',
+    backgroundColor: '#FFFFFF',
   },
-  buttonContainer: {
+  mainview: {
+    flex:1,
+    flexDirection:'column',
+    justifyContent: 'center',
   },
   buttonView: {
-    display: 'flex',
-    alignSelf: 'center',
-    width: '70%',
-    marginTop: '80%',
-    height: '35%',
-    //borderWidth: 3,
-    borderRadius: 25,
-    //backgroundColor: 'rgb(232, 247, 238)',
-    justifyContent: 'space-evenly',
+    flex:0.45,
+    justifyContent: 'center',
+    marginHorizontal: '5%',
   },
   titleView: {
-    borderWidth: 3,
-    height: 100,
-    width: 300,
-  },
+    flex:1,
+    alignItems: 'center',
+  }
 
 });
 
