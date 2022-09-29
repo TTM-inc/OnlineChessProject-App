@@ -13,9 +13,14 @@ const Register = ({navigation}) => {
   const goTo = () => navigation.navigate("Register");
 
   const  submit = async () => {
+    console.log("username", username, "Password", password);
     try {
-      const res = await fetch('http://192.168.153.1:3000/register', {
+      const res = await fetch('https://192.168.1.45:3000', {
         method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
         username: username,
         password: password,
@@ -24,10 +29,10 @@ const Register = ({navigation}) => {
     });
     console.log(res);
     onChangeUsername(res);
-    return json; 
+    return res; 
   } catch (error) {
+    console.error("error", error);
     onChangeUsername(error);
-    console.error(error);
     }
   };
 
