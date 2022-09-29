@@ -16,7 +16,31 @@ const Login = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
   const [password, onChangePassword] = React.useState('*************');
   const [isPwdVisible, setPwdVisible] = React.useState(true);
-  const goTo = () => navigation.navigate("Register");
+  const goToSignup = () => navigation.navigate("Register");
+
+  const  submit = async () => {
+    console.log("username", username, "Password", password);
+    try {
+        const res = await fetch('http://192.168.1.45:3000/login', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        username: username,
+        password: password,
+      
+      }),
+    });
+    console.log(res);
+    onChangeUsername(res);
+    return res;
+  } catch (error) {
+    console.error("error", error);
+    onChangeUsername(error);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.view}>
@@ -39,9 +63,9 @@ const Login = ({navigation}) => {
 
           <View style={styles.buttonview}>
 
-              <Button buttonStyle={styles.loginbutton} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'black'}}/>
+              <Button buttonStyle={styles.loginbutton} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'black'}} onPress={submit}/>
 
-              <Button  buttonStyle={styles.button} title="Signup" titleStyle={{color:'white'}} onPress={goTo} type="clear"/>
+              <Button  buttonStyle={styles.button} title="Signup" titleStyle={{color:'white'}} onPress={goToSignup} type="clear"/>
 
               <Button  buttonStyle={styles.button} title="Forgot Password ?" titleStyle={{color:'white'}} type="clear"/>
 
