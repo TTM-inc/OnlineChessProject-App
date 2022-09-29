@@ -20,9 +20,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "infoPlist":{
+      "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to scan barcodes on event tickets.",
-        "NSAppTransportSecurity": ""
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": "true"
+        }
       }
     },
     "android": {
