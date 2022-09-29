@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import InputContainer from '../utils/InputContainer'
 import Background from './Background';
 import { Button } from '@rneui/themed'
+import axios from 'axios'
 
 
 const Register = ({navigation}) => {
@@ -15,7 +16,7 @@ const Register = ({navigation}) => {
   const  submit = async () => {
     console.log("username", username, "Password", password);
     try {
-      const res = await fetch('https://192.168.1.45:3000', {
+        const res = await fetch('http://192.168.1.45:3000/signup', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -29,7 +30,7 @@ const Register = ({navigation}) => {
     });
     console.log(res);
     onChangeUsername(res);
-    return res; 
+    return res;
   } catch (error) {
     console.error("error", error);
     onChangeUsername(error);
