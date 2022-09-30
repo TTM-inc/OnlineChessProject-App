@@ -6,20 +6,15 @@ import { Button } from '@rneui/themed'
 
 
 
-/**
- * TODO: Set padding/margin for Signup and rstPwd buttons
- * @returns 
- */
 
 
 const Login = ({navigation}) => {
-  const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
-  const [password, onChangePassword] = React.useState('*************');
+  const [username, onChangeUsername] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
   const [isPwdVisible, setPwdVisible] = React.useState(true);
-  const goToSignup = () => navigation.navigate("Register");
+  const goToSignup = () => navigation.replace('Register');
 
   const  submit = async () => {
-    console.log("username", username, "Password", password);
     try {
         const res = await fetch('http://192.168.1.45:3000/login', {
         method: 'POST',
@@ -43,7 +38,7 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.view}>
+    <View style={styles.view}>
 
           <View style={styles.textinputview}>
 
@@ -71,7 +66,7 @@ const Login = ({navigation}) => {
 
             </View>
 
-      </SafeAreaView>
+      </View>
   )
 };
 

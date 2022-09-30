@@ -17,7 +17,6 @@ const Home = ({navigation}) => {
 
   return (
       <SafeAreaView style={styles.view}>
-        {/* <LinearGradient colors={['#F67280', '#C06C84', '#6C5B7B', '#355C7D' ]} style={styles.view} > */}
             <View style = {styles.mainview}>
               <View style={styles.titleView}>
                 <Text style={styles.text}>Chess</Text>
@@ -28,7 +27,6 @@ const Home = ({navigation}) => {
                 <Button onPress={""} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"} titleStyle={{color:'#000000'}}></Button>
               </View>
             </View>
-        {/* </LinearGradient> */}
       </SafeAreaView>
     )
 }
