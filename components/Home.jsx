@@ -34,7 +34,7 @@ const Home = ({navigation}) => {
 const styles = StyleSheet.create({
   
   text:{
-    fontSize: '50px',
+    fontSize: 50,
     color:'#FFFFFF',
   },
   view: {
