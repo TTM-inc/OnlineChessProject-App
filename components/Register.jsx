@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import InputContainer from '../utils/InputContainer'
-import { Button } from '@rneui/themed'
+import { Button, Icon } from '@rneui/themed'
 
 
 const Register = ({navigation}) => {
@@ -10,7 +10,18 @@ const Register = ({navigation}) => {
   const [email, onChangeEmail] = React.useState('UrMailAdress@email.com');
   const [isPwdHidden, setPwdVisible] = React.useState(true);
   const [error, onSetError] = React.useState("test");
+  const [eyeCon, setEyeCon] = React.useState('eye');
   
+  const passwordOnOff = () => {
+    if (eyeCon === 'eye') {
+      setEyeCon('eye-with-line');
+      setPwdVisible(false);
+      return;
+    }
+    else {
+      setPwdVisible(true)
+    } setEyeCon('eye');
+  }
 
   const  submit = async () => {
     console.log("username", username, "Password", password);
@@ -43,19 +54,17 @@ const Register = ({navigation}) => {
       <View style={styles.textview}>
 
           <InputContainer label={"Username :"}>
-
             <TextInput style={styles.string} onChangeText={onChangeUsername} value={username}></TextInput>
 
           </InputContainer>
 
           <InputContainer label={"E-Mail address :"}>
-
             <TextInput style={styles.string} onChangeText={onChangeEmail} value={email}></TextInput>
 
           </InputContainer>
 
           <InputContainer label={"Password :"}>
-
+            <Icon name={eyeCon} type='entypo' onPress={passwordOnOff}/>
             <TextInput style={styles.string} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>
 
           </InputContainer>

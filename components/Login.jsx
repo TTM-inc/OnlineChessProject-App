@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
-import { Button } from '@rneui/themed'
+import { Button, Icon } from '@rneui/themed'
 
 
 
@@ -12,7 +12,21 @@ const Login = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('');
   const [password, onChangePassword] = React.useState('');
   const [isPwdVisible, setPwdVisible] = React.useState(true);
+  const [eyeCon, setEyeCon] = React.useState('eye');
+
   const goToSignup = () => navigation.replace('Register');
+
+  const passwordOnOff = () => {
+    if (eyeCon === 'eye') {
+      setEyeCon('eye-with-line');
+      setPwdVisible(false);
+      return;
+    }
+    else {
+      setPwdVisible(true)
+    } setEyeCon('eye');
+  }
+
 
   const  submit = async () => {
     try {
@@ -49,6 +63,8 @@ const Login = ({navigation}) => {
               </InputContainer>
 
               <InputContainer label={"Password"}>
+
+                <Icon name={eyeCon} type='entypo' onPress={passwordOnOff} containerStyle={styles.eye}/>
 
                 <TextInput style={styles.inputstyle} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
 
@@ -109,6 +125,9 @@ const styles = StyleSheet.create({
     // borderColor:'red',
     // borderWidth: 1
   },
+  eye: {
+    borderRadius: 50,
+  }
 });
 
 export default Login
