@@ -9,6 +9,7 @@ const Register = ({navigation}) => {
   const [password, onChangePassword] = React.useState('slt');
   const [email, onChangeEmail] = React.useState('UrMailAdress@email.com');
   const [isPwdHidden, setPwdVisible] = React.useState(true);
+  const [error, onSetError] = React.useState("test");
   
 
   const  submit = async () => {
@@ -59,6 +60,10 @@ const Register = ({navigation}) => {
 
           </InputContainer>
 
+          <Text style = {styles.text} title={"Error message"}>
+            ""
+          </Text>
+
       </View>  
 
       <View style={styles.buttonview}> 
@@ -77,6 +82,9 @@ const styles = StyleSheet.create({
     padding: 14,
     fontSize: 17,
     width: '95%',
+  },
+  text: {
+
   },
   safeview: {
     flex:1,
