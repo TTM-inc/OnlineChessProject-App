@@ -14,9 +14,9 @@ const Register = ({navigation}) => {
   const [resOverlay, setResOverlay] = React.useState({color: '#000000', message: 'HellaSku'});
 
   const handleResponse = (res) => {
+    console.log(res);
     let color = '';
     let message = '   ';
-    (res.status === 200) ? color = '#004F2D' : color = '#800E13'; 
     switch (res.status) {
       case (201):
         color = '#004F2D'
@@ -46,7 +46,7 @@ const Register = ({navigation}) => {
   const  submit = async () => {
     console.log("username", username, "Password", password);
     try {
-          const res = await fetch('http://192.168.1.45:3000/signup', {
+          const res = await fetch('http://192.168.1.29:3000/signup', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -57,8 +57,11 @@ const Register = ({navigation}) => {
       password: password,
       email: email,
       })
-    });
-    handleResponse(res);
+    })
+    .then((data) => {
+      console.log(data);
+      handleResponse(data);
+    })
   } catch (error) {
     console.error("error", error);
     }
