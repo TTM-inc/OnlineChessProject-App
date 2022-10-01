@@ -59,7 +59,6 @@ const Register = ({navigation}) => {
       })
     })
     .then((data) => {
-      console.log(data);
       handleResponse(data);
     })
   } catch (error) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
-import { Button, Icon } from '@rneui/themed'
+import { Button, Icon, Overlay, Divider } from '@rneui/themed'
 
 
 
@@ -13,8 +13,17 @@ const Login = ({navigation}) => {
   const [password, onChangePassword] = React.useState('');
   const [isPwdVisible, setPwdVisible] = React.useState(true);
   const [eyeCon, setEyeCon] = React.useState('eye');
+  const [showOverkay, setShowOverlay] = React.useState(false);
+  const [resOverlay, setResOverlay] = React.useState({color: '#000000', message: 'HellaSku'});
 
   const goToSignup = () => navigation.replace('Register');
+
+  const handleResponse = (res) => {
+    if (res.status === 401) {
+      setResOverlay({color: '#800E13', message: 'Your username or password is incorrect'});
+      setShowOverlay(true);
+    }
+  }
 
   const passwordOnOff = () => {
     if (eyeCon === 'eye') {
@@ -30,7 +39,7 @@ const Login = ({navigation}) => {
 
   const  submit = async () => {
     try {
-        const res = await fetch('http://192.168.1.45:3000/login', {
+        const res = await fetch('http://192.168.1.29:3000/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -41,48 +50,54 @@ const Login = ({navigation}) => {
         password: password,
       
       }),
+    })
+    .then((data) => {
+      handleResponse(data);
     });
-    console.log(res);
-    onChangeUsername(res);
-    return res;
   } catch (error) {
     console.error("error", error);
-    onChangeUsername(error);
     }
   };
 
   return (
     <View style={styles.view}>
 
-          <View style={styles.textinputview}>
+      <View style={styles.textinputview}>
 
-              <InputContainer label={"Username"}>
+        <Overlay isVisible={showOverkay} onBackdropPress={() => setShowOverlay(false)}>
 
-                <TextInput style={styles.inputstyle} onChangeText={onChangeUsername} value={username}></TextInput>
+          <Divider inset={true} insetType={'left'} color={resOverlay.color}/>
+              
+          <Text>{resOverlay.message}</Text>
+            
+        </Overlay>      
+        <InputContainer label={"Username"}>
 
-              </InputContainer>
+          <TextInput style={styles.inputstyle} onChangeText={onChangeUsername} value={username}></TextInput>
 
-              <InputContainer label={"Password"}>
+        </InputContainer>
 
-                <Icon name={eyeCon} type='entypo' onPress={passwordOnOff} containerStyle={styles.eye}/>
+        <InputContainer label={"Password"}>
 
-                <TextInput style={styles.inputstyle} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
+          <Icon name={eyeCon} type='entypo' onPress={passwordOnOff} containerStyle={styles.eye}/>
 
-              </InputContainer>
+          <TextInput style={styles.inputstyle} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
 
-          </View>
-
-          <View style={styles.buttonview}>
-
-              <Button buttonStyle={styles.loginbutton} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'black'}} onPress={submit}/>
-
-              <Button  buttonStyle={styles.button} title="Signup" titleStyle={{color:'white'}} onPress={goToSignup} type="clear"/>
-
-              <Button  buttonStyle={styles.button} title="Forgot Password ?" titleStyle={{color:'white'}} type="clear"/>
-
-            </View>
+        </InputContainer>
 
       </View>
+
+      <View style={styles.buttonview}>
+
+        <Button buttonStyle={styles.loginbutton} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'black'}} onPress={submit}/>
+
+        <Button  buttonStyle={styles.button} title="Signup" titleStyle={{color:'white'}} onPress={goToSignup} type="clear"/>
+
+        <Button  buttonStyle={styles.button} title="Forgot Password ?" titleStyle={{color:'white'}} type="clear"/>
+
+      </View>
+
+    </View>
   )
 };
 
