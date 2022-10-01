@@ -86,7 +86,7 @@ const Register = ({navigation}) => {
 
           </InputContainer>
 
-          <InputContainer style={styles.inputcontainer} label={"Password :"}>
+          <InputContainer label={"Password :"}>
             <View style={styles.passwordprops}>
               <Icon style= {styles.eyecon} name={eyeCon} type='entypo' onPress={passwordOnOff}/>
               <TextInput style={styles.passwordstring} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>

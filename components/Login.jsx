@@ -62,11 +62,15 @@ const Login = ({navigation}) => {
 
               </InputContainer>
 
-              <InputContainer label={"Password"}>
+              <InputContainer label={"Password"} style={styles.passwordstring}>
 
-                <Icon name={eyeCon} type='entypo' onPress={passwordOnOff} containerStyle={styles.eye}/>
+              <View style={styles.passwordprops}>
 
-                <TextInput style={styles.inputstyle} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
+                  <Icon style={styles.eyecon} name={eyeCon} type='entypo' onPress={passwordOnOff} containerStyle={styles.eye}/>
+
+                  <TextInput style={styles.passwordstring} secureTextEntry={isPwdVisible} onChangeText={onChangePassword} value={password} ></TextInput>
+
+              </View>  
 
               </InputContainer>
 
@@ -98,6 +102,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // borderColor:'white',
     // borderWidth: 1
+  },
+  passwordstring: {
+    flex:1,
+    padding: 14,
+    fontSize: 17,
+  },
+  passwordprops: {
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  eyecon: {
+    justifyContent: "center",
+    alignItems:'center',
   },
   inputstyle: {
     padding: 14,
