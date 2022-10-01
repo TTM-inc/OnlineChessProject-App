@@ -18,9 +18,9 @@ const Register = ({navigation}) => {
     let color = '';
     let message = '   ';
     switch (res.status) {
-      case (200):
+      case (201):
         color = '#004F2D'
-        message = 'Your account was successfully signuped'
+        message = res.json.username
         break;
       case (400):
         color = '#800E13',
@@ -88,7 +88,7 @@ const Register = ({navigation}) => {
 
           </InputContainer>
 
-          <InputContainer style={styles.inputcontainer} label={"Password :"}>
+          <InputContainer label={"Password :"}>
             <View style={styles.passwordprops}>
               <Icon style= {styles.eyecon} name={eyeCon} type='entypo' onPress={passwordOnOff}/>
               <TextInput style={styles.passwordstring} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>
