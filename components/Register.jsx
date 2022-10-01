@@ -18,9 +18,9 @@ const Register = ({navigation}) => {
     let message = '   ';
     (res.status === 200) ? color = '#004F2D' : color = '#800E13'; 
     switch (res.status) {
-      case (200):
+      case (201):
         color = '#004F2D'
-        message = 'Your account was successfully signuped'
+        message = res.json.username
         break;
       case (400):
         color = '#800E13',
