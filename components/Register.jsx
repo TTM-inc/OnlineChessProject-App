@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import InputContainer from '../utils/InputContainer'
-import { Button, Icon } from '@rneui/themed'
-
+import { Button, Icon, Overlay, Divider } from '@rneui/themed'
 
 const Register = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
@@ -11,7 +10,28 @@ const Register = ({navigation}) => {
   const [isPwdHidden, setPwdVisible] = React.useState(true);
   const [error, onSetError] = React.useState("test");
   const [eyeCon, setEyeCon] = React.useState('eye');
-  
+  const [showOverkay, setShowOverlay] = React.useState(false);
+  const [resOverlay, setResOverlay] = React.useState({color: '#000000', message: 'HellaSku'});
+
+  const handleResponse = (res) => {
+    let color = '';
+    let message = '   ';
+    (res.status === 200) ? color = '#004F2D' : color = '#800E13'; 
+    switch (res.status) {
+      case (200):
+        color = '#004F2D'
+        message = 'Your account was successfully signuped'
+        break;
+      case (400):
+        color = '#800E13',
+        message = 'Your username or email address is already in use'
+      default:
+        break;
+    }
+    setResOverlay({color: color, message: message});
+    setShowOverlay(true);
+  }
+
   const passwordOnOff = () => {
     if (eyeCon === 'eye') {
       setEyeCon('eye-with-line');
@@ -26,24 +46,21 @@ const Register = ({navigation}) => {
   const  submit = async () => {
     console.log("username", username, "Password", password);
     try {
-        const res = await fetch('http://192.168.1.45:3000/signup', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-        username: username,
-        password: password,
-        email: email,
-      }),
+          const res = await fetch('http://192.168.1.45:3000/signup', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      username: username,
+      password: password,
+      email: email,
+      })
     });
-    console.log(res);
-    onChangeUsername(res);
-    return res;
+    handleResponse(res);
   } catch (error) {
     console.error("error", error);
-    onChangeUsername(error);
     }
   };
   
@@ -52,7 +69,13 @@ const Register = ({navigation}) => {
     <View style={styles.safeview}>
 
       <View style={styles.textview}>
-
+        <Overlay
+          isVisible={showOverkay}
+          onBackdropPress={() => setShowOverlay(false)}
+        >
+          <Divider inset={true} insetType={'left'} color={resOverlay.color}/>
+          <Text>{resOverlay.message}</Text>
+        </Overlay>
           <InputContainer label={"Username :"}>
             <TextInput style={styles.string} onChangeText={onChangeUsername} value={username}></TextInput>
 
@@ -122,3 +145,4 @@ const styles = StyleSheet.create({
 
 
 export default Register
+
