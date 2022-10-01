@@ -63,9 +63,11 @@ const Register = ({navigation}) => {
 
           </InputContainer>
 
-          <InputContainer label={"Password :"}>
-            <Icon name={eyeCon} type='entypo' onPress={passwordOnOff}/>
-            <TextInput style={styles.string} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>
+          <InputContainer style={styles.inputcontainer} label={"Password :"}>
+            <View style={styles.passwordprops}>
+              <Icon style= {styles.eyecon} name={eyeCon} type='entypo' onPress={passwordOnOff}/>
+              <TextInput style={styles.passwordstring} secureTextEntry={isPwdHidden} onChangeText={onChangePassword} value={password} ></TextInput>
+            </View>
 
           </InputContainer>
 
@@ -90,10 +92,21 @@ const styles = StyleSheet.create({
   string: {
     padding: 14,
     fontSize: 17,
-    width: '95%',
+    width: '85%',
   },
-  text: {
-
+  passwordstring: {
+    flex:1,
+    padding: 14,
+    fontSize: 17,
+  },
+  passwordprops: {
+    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  eyecon: {
+    justifyContent: "center",
+    alignItems:'center',
   },
   safeview: {
     flex:1,
