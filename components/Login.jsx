@@ -1,12 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, SafeAreaView } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, ScrollView, TextInput, SafeAreaView } from 'react-native'
 import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
 import { Button, Icon, Overlay, Divider } from '@rneui/themed'
+import * as SecureStore from 'expo-secure-store'
+
+const getValueFor = async (key) => {
+  const result = await SecureStore.getItemAsync(key);
+  (result) ?  console.log("this is the result", result) : console.log("nothing  found", result);
+}
 
 
-
-
+const isStorageAvailable = async () => {
+  const test = await SecureStore.isAvailableAsync();
+  console.log("isStorageAvailable", test);
+  await getValueFor('token');
+}
 
 const Login = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('');
@@ -16,13 +25,24 @@ const Login = ({navigation}) => {
   const [showOverkay, setShowOverlay] = React.useState(false);
   const [resOverlay, setResOverlay] = React.useState({color: '#000000', message: 'HellaSku'});
 
+  const saveStorage = async (key, value) => {
+    await SecureStore.setItemAsync(key, value)
+    .then(()=> {
+    })
+  }
+
   const goToSignup = () => navigation.replace('Register');
 
-  const handleResponse = (res) => {
-    if (res.status === 401) {
+  const handleResponse = async (res) => {
+    if (!res.token) {
       setResOverlay({color: '#800E13', message: 'Your username or password is incorrect'});
       setShowOverlay(true);
+      return;
     }
+    setResOverlay({color: '#004F2D', message: 'GG'});
+    setShowOverlay(true);
+    await saveStorage('token', res.token);
+    await saveStorage('userId', res.userId);
   }
 
   const passwordOnOff = () => {
@@ -39,11 +59,12 @@ const Login = ({navigation}) => {
 
   const  submit = async () => {
     try {
-        const res = await fetch('http://192.168.1.29:3000/login', {
+      await fetch('http://192.168.1.45:3000/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'authorization': 'token'
         },
         body: JSON.stringify({
         username: username,
@@ -51,9 +72,10 @@ const Login = ({navigation}) => {
       
       }),
     })
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       handleResponse(data);
-    });
+    })
   } catch (error) {
     console.error("error", error);
     }
@@ -98,7 +120,7 @@ const Login = ({navigation}) => {
 
         <Button  buttonStyle={styles.button} title="Signup" titleStyle={{color:'white'}} onPress={goToSignup} type="clear"/>
 
-        <Button  buttonStyle={styles.button} title="Forgot Password ?" titleStyle={{color:'white'}} type="clear"/>
+        <Button onPress={isStorageAvailable} buttonStyle={styles.button} title="Forgot Password ?" titleStyle={{color:'white'}} type="clear"/>
 
       </View>
 

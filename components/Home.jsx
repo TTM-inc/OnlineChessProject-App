@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
 import { Dimmensions } from 'react-native';
 import Background from './Background';
@@ -5,17 +6,35 @@ import { Button } from '@rneui/themed'
 import Register from './Register';
 import { LinearGradient } from 'expo-linear-gradient';
 import { color } from '@rneui/base';
+import {saveStorage, getValueFor} from './../utils/LocalStorage';
+const jwt = require('jsonwebtoken');
+
+
+
 
 
 const Home = ({navigation}) => {
 
-    // const windowWidth = Dimmensions.get('window').width;
-    // const windowHeight = Dimmensions.get('window').height;
+  const [isLoading, setIsLoading] = React.useState(true);
   const goToLogin = () => navigation.navigate("Login");
   const goToRegister = () => navigation.navigate("Register");
+  const isAuthenticated = () => navigation.navigate("Menu");
+
+  
 
 
-  return (
+ if (isLoading) {
+  const token = getValueFor('token');
+  const userId = getValueFor('userId');
+  if (!token || !userId) {
+    setIsLoading(false);
+    return;
+  }
+  const decodedtoken = jwt.verify(token, )
+}
+
+
+  return (isLoading) ? (
       <SafeAreaView style={styles.view}>
             <View style = {styles.mainview}>
               <View style={styles.titleView}>
@@ -28,6 +47,10 @@ const Home = ({navigation}) => {
               </View>
             </View>
       </SafeAreaView>
+    ) : (
+      <View>
+        <Text>LOADING</Text>
+      </View>
     )
 }
 

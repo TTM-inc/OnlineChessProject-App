@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import InputContainer from '../utils/InputContainer'
 import { Button, Icon, Overlay, Divider } from '@rneui/themed'
+import * as SecureStore from 'expo-secure-store'
 
 const Register = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
@@ -12,6 +13,24 @@ const Register = ({navigation}) => {
   const [eyeCon, setEyeCon] = React.useState('eye');
   const [showOverkay, setShowOverlay] = React.useState(false);
   const [resOverlay, setResOverlay] = React.useState({color: '#000000', message: 'HellaSku'});
+
+
+  const getValueFor = async (key) => {
+    try {
+      const result = await SecureStore.getItemAsync(key);
+      (result) ?  console.log("this is the result", result) : console.log("nothing  found", result)
+      .then(() => {
+        return result;
+      })   
+    } catch (e) {
+      console.log("error", e);
+  }
+}
+
+  const token = getValueFor('token');
+  console.log(token);
+
+  
 
   const handleResponse = (res) => {
     console.log(res);
@@ -46,7 +65,7 @@ const Register = ({navigation}) => {
   const  submit = async () => {
     console.log("username", username, "Password", password);
     try {
-          const res = await fetch('http://192.168.1.29:3000/signup', {
+          const res = await fetch('http://192.168.1.45:3000/signup', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
