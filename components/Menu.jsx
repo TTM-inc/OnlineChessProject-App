@@ -2,30 +2,32 @@ import { StyleSheet, View, SafeAreaView, Text } from "react-native";
 import {saveStorage, getValueFor} from './../utils/LocalStorage';
 import HeaderMenu from "../utils/Header";
 import DonutChartMenu from "../utils/DonutChart";
+import WinRateMenu from "../utils/WinRate";
 //import LinearGradient from 'react-native-linear-gradient';
 
 const Menu = (navigation) => {
 
+
   return (
-    <SafeAreaView style={styles.background}>
+    <SafeAreaView style={styles.background} >
 
-      <View style={styles.infodiv}>
+      <View style={styles.infodiv} >
 
-        <View style={styles.header}>
+        <View style={styles.header} >
           <HeaderMenu/>
         </View>
 
-        <View style={styles.graph}>
-          <DonutChartMenu/>
+        <View style={styles.graph} >
+          <DonutChartMenu />
         </View>
         
-        <View style={styles.winrate}>
-
+        <View style={styles.winrate} >
+          <WinRateMenu />
         </View>
 
       </View>
 
-      <View style={styles.playdiv}>
+      <View style={styles.playdiv} >
 
 
       </View>
