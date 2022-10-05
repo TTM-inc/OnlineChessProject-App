@@ -10,9 +10,34 @@ exports.saveStorage = async (key, value) => {
   .then(()=> { return });
 }
 
-exports.isTokenValid = async () => {
-  const token = await getValueFor('token');
-  const userId = await getValueFor('user_id');
+exports.isTokenValid = async (setState) => {
 
-
+  const getValueFor = async (key) => {
+    const result = await SecureStore.getItemAsync(key);
+    return result;
+  }
+  const userId = await getValueFor('userId')
+  const token = await getValueFor('token')
+  try {
+    if (!token || !userId) return false
+        const res = await fetch('http://192.168.1.29:3000/istokenvalid', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${token}`,
+          },
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            setState(false) 
+          }
+          if (data.isTokenValid === true) {
+            setState(true)
+          }
+          })
+      } catch (error) {
+        console.error("error", error);
+      }
 }

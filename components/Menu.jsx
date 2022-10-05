@@ -1,6 +1,13 @@
-import { View, SafeAreaView } from "react-native";
+import { View, SafeAreaView, Text } from "react-native";
 import {saveStorage, getValueFor} from './../utils/LocalStorage';
 
-<SafeAreaView>
-    GG a toi bg
-</SafeAreaView>
+const Menu = (navigation) => {
+
+  return (
+    <SafeAreaView>
+      <Text>Salam GG BG</Text>
+    </SafeAreaView>
+  )
+}
+
+export default Menu

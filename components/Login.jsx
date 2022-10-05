@@ -15,6 +15,7 @@ const isStorageAvailable = async () => {
   const test = await SecureStore.isAvailableAsync();
   console.log("isStorageAvailable", test);
   await getValueFor('token');
+  await getValueFor('userId');
 }
 
 const Login = ({navigation}) => {
@@ -59,7 +60,7 @@ const Login = ({navigation}) => {
 
   const  submit = async () => {
     try {
-      await fetch('http://192.168.1.45:3000/login', {
+      await fetch('http://192.168.1.29:3000/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
