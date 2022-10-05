@@ -7,7 +7,9 @@
 const sentenceList = [
   'How are you buddy',
   'Blabla',
-  'Ble,ble,ble'
+  'Ble,ble,ble',
+  'Va niquer tes morts fils deh pute !',
+  'Gl Bro !',
 ]
 
 export default sentenceList

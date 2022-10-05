@@ -3,34 +3,41 @@ import {saveStorage, getValueFor} from './../utils/LocalStorage';
 import HeaderMenu from "../utils/Header";
 import DonutChartMenu from "../utils/DonutChart";
 import WinRateMenu from "../utils/WinRate";
-//import LinearGradient from 'react-native-linear-gradient';
+// import Gradient from 'react-native-gradient'
 
 const Menu = (navigation) => {
+
+
 
 
   return (
     <SafeAreaView style={styles.background} >
 
-      <View style={styles.infodiv} >
+        {/* <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}> */}
 
-        <View style={styles.header} >
-          <HeaderMenu/>
+        <View style={styles.infodiv} >
+
+          <View style={styles.header} >
+            <HeaderMenu/>
+          </View>
+
+          <View style={styles.graph} >
+            <DonutChartMenu />
+          </View>
+          
+          <View style={styles.winrate} >
+            <WinRateMenu />
+          </View>
+
         </View>
 
-        <View style={styles.graph} >
-          <DonutChartMenu />
-        </View>
-        
-        <View style={styles.winrate} >
-          <WinRateMenu />
+        <View style={styles.playdiv} >
+
+
         </View>
 
-      </View>
+      {/* </LinearGradient> */}
 
-      <View style={styles.playdiv} >
-
-
-      </View>
     </SafeAreaView>
   )
 }
@@ -39,33 +46,40 @@ const Menu = (navigation) => {
 const styles = StyleSheet.create({
 background: {
   flex: 1,
-  backgroundColor: '#000000'
+  backgroundColor:'black',
 },
+
 infodiv: {
   flex:0.5,
-  borderColor: 'red',
-  borderWidth: 1,
+  // borderColor: 'red',
+  // borderWidth: 1,
   flexDirection: 'column',
 },
 header:{
   flex:0.2,
-  borderColor: 'white',
-  borderWidth: 1,
+  // borderColor: 'white',
+  // borderWidth: 1,
 },
 graph:{
   flex:0.6,
-  borderColor: 'white',
-  borderWidth: 1,
+  // borderColor: 'white',
+  // borderWidth: 1,
 },
 winrate:{
   flex:0.2,
   borderColor: 'white',
-  borderWidth: 1,
+  // borderWidth: 1,
 },
 playdiv:{
   flex:0.5,
-  borderColor: 'blue',
-  borderWidth: 1,
+  // borderColor: 'blue',
+  // borderWidth: 1,
+},
+linearGradient: {
+  flex: 1,
+  paddingLeft: 15,
+  paddingRight: 15,
+  borderRadius: 5
 },
 });
 

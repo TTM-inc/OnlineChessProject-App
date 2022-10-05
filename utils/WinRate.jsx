@@ -1,23 +1,75 @@
 import { View, StyleSheet, Text } from "react-native";
 import { Badge } from '@rneui/themed';
+import ViewStyle from "../assets/styles/TextInputStyle";
 
 
 const WinRate = () => {
+
+  const Data = [
+    {
+      value: 95,
+      color: 'orange',
+      name: 'win'
+    },
+    {
+      value: 16,
+      color: 'grey',
+      name: 'draw',
+    },
+    {
+      value: 75,
+      color: 'blue',
+      name: 'loose',
+    },
+  ];
+
+  const total = Data.win + Data.loose + Data.draw;
+  const winRate = 100 * (Data.win / total);
+  const looseRate = 100 * (Data.loose / total);
+  const drawRate = 100 * (Data.draw / total);
+
 
   return (
     <View style={styles.rate}>
 
       <View style={styles.win}>
-        <Badge status="color">25%</Badge>
-        <Text>Win</Text>        
+        <View style={styles.card}>
+          <View style={styles.badgeContainer} >
+
+            <Badge badgeStyle={styles.badge.win}/>
+          
+          </View>
+          <Text style={styles.numbertext} >42%</Text>
+        </View>
+        <View style={styles.textdiv}>
+          <Text style={styles.text} >Victories</Text>        
+        </View>
       </View>
 
       <View style={styles.loose}>
-        <Text>Loose</Text>
+
+        <View style={styles.card}>
+          <View style={styles.badgeContainer} >
+            <Badge badgeStyle={styles.badge.loose}/> 
+          </View>
+          <Text style={styles.numbertext} >69%</Text>
+        </View>
+        <View style={styles.textdiv}>
+          <Text style={styles.text} >Defeats</Text>
+        </View>
+
       </View>
 
       <View style={styles.draw}>
-        <Text>Draw</Text>
+        <View style={styles.card}>
+          <View style={styles.badgeContainer}>
+            <Badge badgeStyle={styles.badge.draw} />
+          </View>
+          <Text style={styles.numbertext}>20%</Text>
+        </View>
+        <View style={styles.textdiv}>
+          <Text style={styles.text} >Draws</Text>
+        </View>
       </View>
 
     </View>
@@ -26,26 +78,64 @@ const WinRate = () => {
   
   const styles = StyleSheet.create({
     rate: {
-      flex: 1,
-      backgroundColor: 'green',
+      flex:1,
       flexDirection: 'row',
-      padding: 5,
+      alignItems: 'center',
+    },
+  badgeContainer: {
+    alignSelf: 'center',
+  },  
+    badge: {
+      draw: {
+        borderWidth:0,
+        backgroundColor: 'grey',
+      },
+      win: {
+        borderWidth:0,
+        backgroundColor: 'orange',
+      },
+      loose: {
+        borderWidth:0,
+        backgroundColor: 'blue',
+      },
+    },
+    card: {
+      width:'50%',
+      flexDirection: 'row',
+      justifyContent:'space-evenly',
+      // borderWidth: 2,
+      borderColor: 'purple',
     },
     win: {
       flex: 0.33,
-      borderWidth: 2,
-      borderColor: 'blue'      
+      // borderWidth: 2,
+      borderColor: 'blue',
+      alignItems: 'center',
     },
     loose: {
       flex: 0.33,
-      borderWidth: 2,
-      borderColor: 'orange'      
-
+      // borderWidth: 2,
+      borderColor: 'orange',
+      alignItems: 'center',
     },
     draw: {
       flex: 0.33,
-      borderWidth: 2,
-      borderColor: 'grey'      
+      // borderWidth: 2,
+      borderColor: 'grey',
+      alignItems: 'center',
+    },
+    numbertext: {
+      color: 'white',  
+    },
+    text: {
+      color: 'grey',
+
+    },
+    textdiv:{
+      borderColor: 'white',
+      // borderWidth: 1,
+      alignSelf: 'flex-start',
+      marginLeft: 55,      
     },
   })
 

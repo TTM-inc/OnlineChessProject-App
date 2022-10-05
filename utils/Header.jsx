@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
    leftContainer: {
     flex: 0.85,
     borderColor: 'white',
-    borderWidth: 1,
+    // borderWidth: 1,
     flexDirection:'column',
     justifyContent: 'space-around',
     paddingLeft:20
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
    rightContainer: {
     flex:0.15,
     borderColor: 'green',
-    borderWidth: 1,
+    // borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

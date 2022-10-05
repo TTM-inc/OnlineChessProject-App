@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+ import { View, StyleSheet } from "react-native";
 // import {Donut} from 'react-native-donut-chart';
 // import Pie from 'react-native-pie'
 import { DonutChart } from "react-native-circular-chart";
@@ -33,15 +33,15 @@ const DonutChartMenu = () => {
     <View style={styles.donutchartview}>
       <DonutChart
       data={Data}
-      radius={90}
+      radius={75}
+      strokeWidth={20}
       containerWidth={105 * 2}
       containerHeight={105 * 2}
-      type="butt"
+      type="round"
       startAngle={0}
       endAngle={360}
       animationType="slide"
       />
-
     </View>
   )
 }
@@ -49,8 +49,8 @@ const DonutChartMenu = () => {
 const styles = StyleSheet.create({
   donutchartview:{
     flex:1,
-    borderColor: 'white',
-    borderWidth: 1,
+    // borderColor: 'white',
+    // borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
