@@ -40,8 +40,7 @@ const Login = ({navigation}) => {
       setShowOverlay(true);
       return;
     }
-    setResOverlay({color: '#004F2D', message: 'GG'});
-    setShowOverlay(true);
+    navigation.navigate('Menu')
     await saveStorage('token', res.token);
     await saveStorage('userId', res.userId);
   }
@@ -60,7 +59,7 @@ const Login = ({navigation}) => {
 
   const  submit = async () => {
     try {
-      await fetch('http://192.168.1.29:3000/login', {
+      await fetch('http://192.168.1.45:3000/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',

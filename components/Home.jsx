@@ -4,7 +4,6 @@ import { Dimmensions } from 'react-native';
 import Background from './Background';
 import { Button } from '@rneui/themed'
 import Register from './Register';
-import { LinearGradient } from 'expo-linear-gradient';
 import { color } from '@rneui/base';
 import * as Storage from './../utils/LocalStorage';
 
@@ -16,6 +15,7 @@ const Home = ({navigation}) => {
   const goToMenu = () => (isConnected) ? navigation.navigate("Menu") : console.log("isNot connected");
   const [isConnected, setIsConnected] = useState('');
   console.log("isLoading", isLoading);
+  console.log("is connected", isConnected);
   
   const CheckToken = async () => {
     await Storage.isTokenValid(setIsConnected)
