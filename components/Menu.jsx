@@ -1,7 +1,7 @@
 import { StyleSheet, View, SafeAreaView, Text } from "react-native";
 import {saveStorage, getValueFor} from './../utils/LocalStorage';
 import HeaderMenu from "../utils/Header";
-import DonutChart from "../utils/DonutChart";
+import DonutChartMenu from "../utils/DonutChart";
 //import LinearGradient from 'react-native-linear-gradient';
 
 const Menu = (navigation) => {
