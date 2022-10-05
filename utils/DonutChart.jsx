@@ -1,34 +1,29 @@
-// import { DonutChart } from "react-native-circular-chart";
-import { View } from "react-native"
+import { View } from "react-native";
+import {Donut} from 'react-native-donut-chart';
 
-// const Data = [
-//   {
-//     name: 'Win',
-//     value: 75,
-//     color: 'blue',
-//   },
-//   {
-//     name: 'Loose',
-//     value: 95,
-//     color: 'orange',
-//   },
-//   {
-//     name: 'Draw',
-//     value: 12,
-//     color: 'grey',
-//   }
-// ];
+const Data = [
+  {
+    value: 75,
+    color: 'blue',
+  },
+  {
+    value: 95,
+    color: 'orange',
+  },
+  {
+    value: 12,
+    color: 'grey',
+  }
+];
 
 const DonutChartMenu = () => {
 
   return (
     <View>
-      
-      {/* <DonutChart
-      data={Data}
-      
-      /> */}
-
+      <Donut
+        gap={0}
+        data={Data}
+      />
     </View>
   )
 }
