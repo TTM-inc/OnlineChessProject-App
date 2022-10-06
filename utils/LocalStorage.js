@@ -20,7 +20,7 @@ exports.isTokenValid = async (setState) => {
   const token = await getValueFor('token')
   try {
     if (!token || !userId) return false
-        const res = await fetch('http://192.168.1.45:3000/istokenvalid', {
+        const res = await fetch('http://192.168.1.29:3000/istokenvalid', {
           method: 'POST',
           headers: {
             Accept: 'application/json',

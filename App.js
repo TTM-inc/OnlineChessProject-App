@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Menu from './components/Menu';
 import Register from './components/Register';
+import Test from './utils/Test'
 
 const styles = StyleSheet.create({
   container: {
@@ -44,6 +45,10 @@ export default function App() {
         <Stack.Screen
           name='Menu'
           component={Menu}
+        />
+        <Stack.Screen
+          name='Test'
+          component={Test}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -3,6 +3,7 @@ import {saveStorage, getValueFor} from './../utils/LocalStorage';
 import HeaderMenu from "../utils/Header";
 import DonutChartMenu from "../utils/DonutChart";
 import WinRateMenu from "../utils/WinRate";
+import PlayButtonMenu from "../utils/PlayButton";
 // import Gradient from 'react-native-gradient'
 
 const Menu = (navigation) => {
@@ -32,7 +33,7 @@ const Menu = (navigation) => {
         </View>
 
         <View style={styles.playdiv} >
-
+          <PlayButtonMenu/>
 
         </View>
 
