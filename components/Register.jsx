@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
 import InputContainer from '../utils/InputContainer'
 import { Button, Icon, Overlay, Divider } from '@rneui/themed'
 import * as SecureStore from 'expo-secure-store'
+import config from '../config'
 
 const Register = ({navigation}) => {
   const [username, onChangeUsername] = React.useState('UrFavoriteUsername');
@@ -65,7 +66,7 @@ const Register = ({navigation}) => {
   const  submit = async () => {
     console.log("username", username, "Password", password);
     try {
-          const res = await fetch('http://192.168.1.45:3000/signup', {
+          const res = await fetch(`http://${config.HOST}:${config.PORT}/signup`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
