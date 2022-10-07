@@ -17,7 +17,7 @@ const HeaderMenu = () => {
             <Text style={styles.text}>
                 Welcome,
             </Text>
-            <Text style={styles.text}>
+            <Text style={styles.sentence}>
               {sentenceList[sentencePosition]}
             </Text>
         </View>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     // borderWidth: 1,
     flexDirection:'column',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     paddingLeft:20
    },
    rightContainer: {
@@ -50,7 +50,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text:{
-    color:'white'
+    color:'#b3b3b3',
+  },
+  sentence:{
+    color:'#676767',
   }
 });
 

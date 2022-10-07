@@ -88,15 +88,15 @@ const WinRate = () => {
     badge: {
       draw: {
         borderWidth:0,
-        backgroundColor: 'grey',
+        backgroundColor: '#303242',
       },
       win: {
         borderWidth:0,
-        backgroundColor: 'orange',
+        backgroundColor: '#fd7443',
       },
       loose: {
         borderWidth:0,
-        backgroundColor: 'blue',
+        backgroundColor: '#4b69ff',
       },
     },
     card: {
@@ -125,10 +125,10 @@ const WinRate = () => {
       alignItems: 'center',
     },
     numbertext: {
-      color: 'white',  
+      color: '#b3b3b3',  
     },
     text: {
-      color: 'grey',
+      color: '#676767',
 
     },
     textdiv:{

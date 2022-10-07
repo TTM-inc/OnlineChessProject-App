@@ -11,19 +11,18 @@ const DonutChartMenu = () => {
   const Data = [
     {
       value: 95,
-      color: 'orange',
-      name: 'win'
+      color: '#fd7443',
+      name: 'Victories'
     },
     {
       value: 16,
-      color: 'grey',
-      strokeLineJoin: 'nothing',
-      name: 'loose',
+      color: '#303242',
+      name: 'Draws',
     },
     {
       value: 75,
-      color: 'blue',
-      name: 'draw',
+      color: '#4b69ff',
+      name: 'Defeats',
     },
   ];
 
@@ -33,8 +32,9 @@ const DonutChartMenu = () => {
     <View style={styles.donutchartview}>
       <DonutChart
       data={Data}
+      datacolor={Data.datacolor}
       radius={75}
-      strokeWidth={20}
+      strokeWidth={23}
       containerWidth={105 * 2}
       containerHeight={105 * 2}
       type="round"
