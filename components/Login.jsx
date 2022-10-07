@@ -4,6 +4,8 @@ import ViewStyle from '../assets/styles/TextInputStyle'
 import InputContainer from '../utils/InputContainer'
 import { Button, Icon, Overlay, Divider } from '@rneui/themed'
 import * as SecureStore from 'expo-secure-store'
+import config from '../config'
+
 
 const getValueFor = async (key) => {
   const result = await SecureStore.getItemAsync(key);
@@ -59,7 +61,7 @@ const Login = ({navigation}) => {
 
   const  submit = async () => {
     try {
-      await fetch('http://192.168.1.45:3000/login', {
+      await fetch(`http://${config.HOST}:${config.PORT}/login`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

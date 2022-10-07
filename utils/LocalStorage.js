@@ -1,5 +1,5 @@
 import * as SecureStore from 'expo-secure-store'
-
+import config from '../config'
 exports.getValueFor = async (key) => {
   const result = await SecureStore.getItemAsync(key);
   return result;
@@ -20,7 +20,7 @@ exports.isTokenValid = async (setState) => {
   const token = await getValueFor('token')
   try {
     if (!token || !userId) return false
-        const res = await fetch('http://192.168.1.45:3000/istokenvalid', {
+        const res = await fetch(`http://${config.HOST}:${config.PORT}/istokenvalid`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
