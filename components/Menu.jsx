@@ -5,6 +5,7 @@ import DonutChartMenu from "../utils/DonutChart";
 import WinRateMenu from "../utils/WinRate";
 import PlayButtonMenu from "../utils/PlayButton";
 import { LinearGradient } from 'expo-linear-gradient';
+import AnimatedButton from "../utils/AnimatedButton";
 
 const Menu = (navigation) => {
 
@@ -34,6 +35,7 @@ const Menu = (navigation) => {
 
             <View style={styles.graph} >
               <DonutChartMenu />
+              {/* <AnimatedButton style={styles.test}/> */}
             </View>
             
             <View style={styles.winrate} >
@@ -73,6 +75,8 @@ header:{
 },
 graph:{
   flex:0.6,
+  justifyContent: 'center',
+  alignItems: 'center',
   // borderColor: 'white',
   // borderWidth: 1,
 },
@@ -89,6 +93,10 @@ playdiv:{
 linearGradient: {
   flex: 1,
 },
+test: {
+  justifyContent: 'center',
+  alignItems: 'center',
+}
 });
 
 

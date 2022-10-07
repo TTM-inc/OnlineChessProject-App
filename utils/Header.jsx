@@ -1,6 +1,7 @@
 import { Header, Icon, Image } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import { Text, StyleSheet, View } from 'react-native'
+import AnimatedButton from './AnimatedButton';
 import sentenceList from '../assets/sentenceList';
 
 const HeaderMenu = () => {
@@ -22,7 +23,7 @@ const HeaderMenu = () => {
             </Text>
         </View>
         <View  style={styles.rightContainer}>
-          <Image/>
+          <AnimatedButton/>
         </View>
     </View>
     )
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
    },
    leftContainer: {
-    flex: 0.85,
+    flex: 0.8,
     borderColor: 'white',
     // borderWidth: 1,
     flexDirection:'column',
@@ -43,10 +44,9 @@ const styles = StyleSheet.create({
     paddingLeft:20
    },
    rightContainer: {
-    flex:0.15,
+    flex:0.2,
     borderColor: 'green',
     // borderWidth: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   text:{
