@@ -5,6 +5,7 @@ import Background from './Background';
 import { Button } from '@rneui/themed'
 import Register from './Register';
 import { color } from '@rneui/base';
+import { LinearGradient } from 'expo-linear-gradient';
 import * as Storage from './../utils/LocalStorage';
 
 const Home = ({navigation}) => {
@@ -31,18 +32,30 @@ const Home = ({navigation}) => {
   }, [isConnected])
 
   return (isLoading === false) ? (
+        <LinearGradient 
+        colors={['#31344b', '#13141D']}
+        start={{
+          x: 0,
+          y: 0
+        }}
+        end={{
+          x: 0.3,
+          y: 0.4
+        }}style={styles.view}>
       <SafeAreaView style={styles.view}>
-            <View style = {styles.mainview}>
+
+            <View style={styles.mainview}>
               <View style={styles.titleView}>
                 <Text style={styles.text}>Chess</Text>
               </View>
               <View style={styles.buttonView}>
-                <Button onPress={goToLogin} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Login"} titleStyle={{color:'#000000'}}></Button>
-                <Button onPress={goToRegister} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Register"} titleStyle={{color:'#000000'}}></Button>
-                <Button onPress={goToMenu} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"} titleStyle={{color:'#000000'}}></Button>
+                  <Button onPress={goToLogin} buttonStyle={styles.button} containerStyle={styles.buttonContainer}   title={"Login"} titleStyle={{color:'#b3b3b3'}}></Button>
+                  <Button onPress={goToRegister} buttonStyle={styles.button} containerStyle={styles.buttonContainer}  title={"Register"} titleStyle={{color:'#b3b3b3'}}></Button>
+                  <Button onPress={goToMenu} buttonStyle={styles.button} containerStyle={styles.buttonContainer} title={"Play as Guest"} titleStyle={{color:'#676767'}}></Button>
               </View>
             </View>
       </SafeAreaView>
+        </LinearGradient>
     ) : (
       <View style={styles.tmpStyle}>
         <Text>LOADING</Text>
@@ -54,23 +67,28 @@ const styles = StyleSheet.create({
   
   text:{
     fontSize: 50,
-    color:'#FFFFFF',
+    color:'#676767',
   },
   view: {
     flex:1,
     justifyContent: 'center',
-    backgroundColor: '#000000',
   },
   button: {
-    height: 55,
-    marginTop: 10,
-    borderRadius: 30,
-    backgroundColor: '#FFFFFF',
+    height:'100%',
+    backgroundColor:'transparent',
   },
   mainview: {
     flex:1,
     flexDirection:'column',
     justifyContent: 'center',
+  },
+  buttonContainer: {
+    flex:1,
+    height: 55,
+    marginTop: 10,
+    borderRadius: 30,
+    borderColor: '#31344b',
+    borderWidth: 1.5,
   },
   buttonView: {
     flex:0.45,
