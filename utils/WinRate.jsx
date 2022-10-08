@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Badge } from '@rneui/themed';
 import ViewStyle from '../assets/styles/TextInputStyle';

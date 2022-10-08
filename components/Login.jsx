@@ -7,7 +7,6 @@ import {
   TextInput,
   SafeAreaView
 } from 'react-native';
-import ViewStyle from '../assets/styles/TextInputStyle';
 import InputContainer from '../utils/InputContainer';
 import { Button, Icon, Overlay, Divider } from '@rneui/themed';
 import * as SecureStore from 'expo-secure-store';

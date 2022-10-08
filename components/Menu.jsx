@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, View, SafeAreaView, Text } from 'react-native';
 import { saveStorage, getValueFor } from './../utils/LocalStorage';
 import HeaderMenu from '../utils/Header';

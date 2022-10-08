@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 // import {Donut} from 'react-native-donut-chart';
 // import Pie from 'react-native-pie'

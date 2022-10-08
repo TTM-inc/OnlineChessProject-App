@@ -1,4 +1,4 @@
-import { HOST, PORT } from '@env'
+import { HOST, PORT } from 'react-native-dotenv'
 
 export default {
   HOST,

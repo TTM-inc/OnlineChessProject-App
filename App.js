@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Menu from './components/Menu';
 import Register from './components/Register';
 import Test from './utils/Test';
+import LocalGame from './components/LocalGame';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,6 +34,7 @@ export default function App() {
           <Stack.Screen name="Register" component={Register} />
           <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="Test" component={Test} />
+          <Stack.Screen name="LocalGame" component={LocalGame} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native';
-import { Dimmensions } from 'react-native';
-import Background from './Background';
 import { Button } from '@rneui/themed';
-import Register from './Register';
-import { color } from '@rneui/base';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Storage from './../utils/LocalStorage';
 

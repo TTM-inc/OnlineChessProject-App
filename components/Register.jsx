@@ -43,6 +43,7 @@ const Register = ({ navigation }) => {
         color = '#004F2D';
         message = res.json.username;
         break;
+
       case 400:
         (color = '#800E13'),
           (message = 'Your username or email address is already in use');

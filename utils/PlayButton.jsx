@@ -1,10 +1,14 @@
+import React from 'react';
 import { StyleSheet, View, SafeAreaView, Text } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Button } from '@rneui/themed';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
-const PlayButton = ({ route, navigation, ...props }) => {
-  const goToLogin = () => navigation.navigate('Login');
+const PlayButton = () => {
+  const navigation = useNavigation();
+  const goToLogin = () => navigation.replace('Login');
+  const gotoLocal = () => navigation.navigate('LocalGame');
 
   return (
     <SafeAreaView style={styles.background}>
@@ -65,6 +69,7 @@ const PlayButton = ({ route, navigation, ...props }) => {
           <Button
             buttonStyle={styles.button.style}
             title={'Local'}
+            onPress={gotoLocal}
             titleStyle={styles.button.title}
           />
         </LinearGradient>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Header, Icon, Image } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
