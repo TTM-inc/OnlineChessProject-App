@@ -1,14 +1,20 @@
-import { StyleSheet, View, Text, ScrollView, TextInput, Modal } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Modal
+} from 'react-native';
 
-const InputContainer = ({children, label}) => {
+const InputContainer = ({ children, label }) => {
   return (
-    
     <View style={styles.centeredView}>
-    <Text style={styles.label}>{label}</Text>
+      <Text style={styles.label}>{label}</Text>
       {children}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -18,10 +24,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 28,
     width: 300,
     backgroundColor: '#FFFFFF',
-    borderRadius: 15,
+    borderRadius: 15
     // borderColor: "yellow",
     // borderWidth:2,
-    
   },
   label: {
     // borderColor: "purple",
@@ -29,8 +34,8 @@ const styles = StyleSheet.create({
     color: '#000000',
     paddingTop: 15,
     paddingLeft: 5,
-    fontSize: 22,
-  },
+    fontSize: 22
+  }
 });
 
-export default InputContainer
+export default InputContainer;
