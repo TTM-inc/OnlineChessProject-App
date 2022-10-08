@@ -1,31 +1,75 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Text } from 'react-native' ;
+import { StyleSheet, View, SafeAreaView, Text, Image } from 'react-native';
 import { useEffect, useState } from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
+import ChessBoard from './../utils/ChessBoard'
 
 
 const LocalGame = () => {
 
 
-
     return (
-
-        <SafeAreaView styles={styles.background} >
-
-
-
-
-        </SafeAreaView>
-
-   )
-
-}
-
+    <LinearGradient
+      colors={['#31344b', '#13141D']}
+      start={{
+        x: 0,
+        y: 0
+      }}
+      end={{
+        x: 0.3,
+        y: 0.4
+      }}
+      style={styles.background}
+    >
+      <SafeAreaView style={styles.mainview}>
+        <View name='header' style={styles.header}>
+        </View> 
+        <View name='playertop' style={styles.playertop}>
+        </View>
+        <View name='chessboard' style={styles.chessboard}>
+            <ChessBoard/>
+        </View>
+        
+        <View name='playerbot' style={styles.playerbot}>
+        </View>
+      
+      </SafeAreaView>
+    </LinearGradient>
+  );
+};
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        backgroundColor: 'black',
-    },
-})
+  background: {
+    flex: 1,
+  },
+  mainview: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  header: {
+    justifySelf:'flex-start',
+    flex: 0.12,
+    borderColor: 'yellow',
+    borderWidth: 2,
+    bottomMargin:10
+  },
+  playertop: {
+    flex:0.12,
+    borderColor: 'white',
+    borderWidth: 2,
+  },
+  chessboard: {
+    flex:0.6,
+    borderColor: 'white',
+    borderWidth: 2,
+  },
+  playerbot: {
+    flex:0.12,
+    // width:'100%',
+    borderColor: 'white',
+    borderWidth: 2,
+  }
 
-export default LocalGame
+});
+
+export default LocalGame;

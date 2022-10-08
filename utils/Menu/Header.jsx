@@ -3,7 +3,7 @@ import { Header, Icon, Image } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import AnimatedButton from './AnimatedButton';
-import sentenceList from '../assets/sentenceList';
+import sentenceList from '../../assets/sentenceList';
 
 const HeaderMenu = () => {
   const [sentencePosition, setSentencePosition] = useState();

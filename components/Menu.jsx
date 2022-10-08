@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, SafeAreaView, Text } from 'react-native';
 import { saveStorage, getValueFor } from './../utils/LocalStorage';
-import HeaderMenu from '../utils/Header';
-import DonutChartMenu from '../utils/DonutChart';
-import WinRateMenu from '../utils/WinRate';
-import PlayButtonMenu from '../utils/PlayButton';
+import HeaderMenu from '../utils/Menu/Header';
+import DonutChartMenu from '../utils/Menu/DonutChart';
+import WinRateMenu from '../utils/Menu/WinRate';
+import PlayButtonMenu from '../utils/Menu/PlayButton';
 import { LinearGradient } from 'expo-linear-gradient';
-import AnimatedButton from '../utils/AnimatedButton';
+import AnimatedButton from '../utils/Menu/AnimatedButton';
 
 const Menu = (navigation) => {
   return (
