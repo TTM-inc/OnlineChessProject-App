@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, View, SafeAreaView, Text, Image } from 'react-native';
 import { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import ChessBoard from './../utils/ChessBoard'
+import ChessBoard from './../utils/ChessBoard';
+import PlayerHeader from '../utils/Game/PlayerHeader';
 
 
 const LocalGame = () => {
@@ -25,12 +26,14 @@ const LocalGame = () => {
         <View name='header' style={styles.header}>
         </View> 
         <View name='playertop' style={styles.playertop}>
+          <PlayerHeader/>
         </View>
         <View name='chessboard' style={styles.chessboard}>
             <ChessBoard/>
         </View>
         
         <View name='playerbot' style={styles.playerbot}>
+          <PlayerHeader/>
         </View>
       
       </SafeAreaView>
@@ -51,12 +54,13 @@ const styles = StyleSheet.create({
     flex: 0.12,
     borderColor: 'yellow',
     borderWidth: 2,
-    bottomMargin:10
+    bottomMargin:10,
   },
   playertop: {
     flex:0.12,
     borderColor: 'white',
     borderWidth: 2,
+    paddingVertical: 5,
   },
   chessboard: {
     flex:0.6,
@@ -68,6 +72,7 @@ const styles = StyleSheet.create({
     // width:'100%',
     borderColor: 'white',
     borderWidth: 2,
+    paddingVertical: 5,
   }
 
 });

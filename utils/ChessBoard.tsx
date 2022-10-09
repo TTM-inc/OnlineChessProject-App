@@ -1,8 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
-const WHITE = "rgb(100, 133, 68)";
-const BLACK = "rgb(230, 233, 198)";
+const WHITE = "#13141D";
+const BLACK = "#2E3341";
 
 const styles = StyleSheet.create({
   container: {
