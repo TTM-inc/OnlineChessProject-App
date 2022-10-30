@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import ChessBoard from './../utils/ChessBoard';
 import PlayerHeader from '../utils/Game/PlayerHeader';
+import MyChessBoard from '../utils/Menu/MyChessBoard';
 
 
 const LocalGame = () => {
@@ -29,7 +30,7 @@ const LocalGame = () => {
           <PlayerHeader/>
         </View>
         <View name='chessboard' style={styles.chessboard}>
-            <ChessBoard/>
+            <MyChessBoard/>
         </View>
         
         <View name='playerbot' style={styles.playerbot}>
